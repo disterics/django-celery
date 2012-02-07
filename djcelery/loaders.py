@@ -53,6 +53,10 @@ class DjangoLoader(BaseLoader):
             try:
                 close()
             except DATABASE_ERRORS, exc:
+                if "closed" in str(exc):
+                    import logging
+                    logger = logging.getLogger(__name__)
+                    logger.exception("Database closed exception detected: %s.", str(Exc))
                 if "closed" not in str(exc):
                     raise
 
