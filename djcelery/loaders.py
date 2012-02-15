@@ -56,7 +56,7 @@ class DjangoLoader(BaseLoader):
                 if "closed" in str(exc):
                     import logging
                     logger = logging.getLogger(__name__)
-                    logger.exception("Database closed exception detected: %s.", str(Exc))
+                    logger.exception("Database closed exception detected: %s.", str(exc))
                 if "closed" not in str(exc):
                     raise
 
